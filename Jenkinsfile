@@ -26,10 +26,10 @@ EOF
 				  export YC_TOKEN=${YC_TOKEN}
 				  terraform init
 				  terraform plan -var='ssh_key=${SSH_PUB_KEY}' \
-				  	-var='ssh_key=${YC_FOLDER_ID}'
+				  	-var='folder_id=${YC_FOLDER_ID}'
 				  terraform apply -auto-approve \
 				  	-var='ssh_key=${SSH_PUB_KEY}' \
-				  	-var='ssh_key=${YC_FOLDER_ID}'
+				  	-var='folder_id=${YC_FOLDER_ID}'
 			  '''
 		  }
 	  }
