@@ -49,6 +49,10 @@ resource "yandex_compute_instance" "build" {
     memory = 2
   }
 
+  scheduling_policy {
+    preemptible = true
+  }
+
   boot_disk {
     disk_id = yandex_compute_disk.boot-disk-1.id
   }
@@ -69,6 +73,10 @@ resource "yandex_compute_instance" "prod" {
   resources {
     cores  = 2
     memory = 2
+  }
+
+  scheduling_policy {
+    preemptible = true
   }
 
   boot_disk {
