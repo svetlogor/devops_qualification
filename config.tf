@@ -49,7 +49,7 @@ resource "yandex_compute_instance" "build" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file("/root/.ssh/id_rsa.pub")}"
   }
 }
 
@@ -71,7 +71,7 @@ resource "yandex_compute_instance" "prod" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file("/root/.ssh/id_rsa.pub")}"
   }
 }
 
