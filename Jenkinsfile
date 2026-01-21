@@ -22,9 +22,7 @@ provider_installation {
 EOF
             export TF_CLI_CONFIG_FILE=\$(pwd)/.terraformrc
 				  set -e
-				  export YC_TOKEN=$(yc iam create-token --impersonate-service-account-id ${YC_TOKEN})
-				  export YC_CLOUD_ID=$(yc config get cloud-id)
-				  export YC_FOLDER_ID=$(yc config get folder-id)
+				  export YC_TOKEN=${YC_TOKEN}
 				  terraform init
 				  terraform plan -var='ssh_key=${SSH_PUB_KEY}'
 				  terraform apply -auto-approve
