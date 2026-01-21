@@ -2,6 +2,10 @@ pipeline {
   agent any
 
   stages {
+	  environment {
+        SSH_PUB_KEY = credentials('id_rsa_pub')
+    }
+
 	  stage('Creating two instances in Yandex Cloud') {
 		  steps {
 			  sh '''
@@ -19,7 +23,7 @@ EOF
             export TF_CLI_CONFIG_FILE=\$(pwd)/.terraformrc
 				  set -e
 				  terraform init
-				  terraform plan
+				  terraform plan -var='ssh_key=${SSH_PUB_KEY}'
 				  terraform apply -auto-approve
 			  '''
        }
