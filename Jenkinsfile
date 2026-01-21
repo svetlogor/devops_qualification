@@ -5,6 +5,18 @@ pipeline {
 	  stage('Creating two instances in Yandex Cloud') {
 		  steps {
 			  sh '''
+			  cat <<EOF > .terraformrc
+provider_installation {
+  network_mirror {
+    url = "https://terraform-mirror.yandexcloud.net"
+    include = ["registry.terraform.io/*/*"]
+  }
+  direct {
+    exclude = ["registry.terraform.io/*/*"]
+  }
+}
+EOF
+            export TF_CLI_CONFIG_FILE=\$(pwd)/.terraformrc
 				  set -e
 				  terraform init
 				  terraform plan
