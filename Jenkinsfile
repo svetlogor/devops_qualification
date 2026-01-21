@@ -11,9 +11,9 @@ pipeline {
 				echo 'building java app'
 			}
 		}
-		stage ('prod') {
+		stage ('deploy') {
 			steps {
-				echo 'start java app'
+				echo 'deploing java app'
 			}
 		}
 	}
