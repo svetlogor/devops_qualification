@@ -11,6 +11,11 @@ provider "yandex" {
   zone = "ru-central1-b"
 }
 
+variable "ssh_key" {
+  description = "SSH public key for VM access"
+  type        = string
+}
+
 resource "yandex_compute_disk" "boot-disk-1" {
   name     = "boot-disk-1"
   type     = "network-hdd"
