@@ -25,7 +25,7 @@ EOF
 				  export YC_TOKEN=${YC_TOKEN}
 				  terraform init
 				  terraform plan -var='ssh_key=${SSH_PUB_KEY}'
-				  terraform apply -auto-approve
+				  terraform apply -auto-approve -var='ssh_key=${SSH_PUB_KEY}'
 			  '''
 		  }
 	  }
