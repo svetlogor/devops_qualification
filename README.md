@@ -2,6 +2,6 @@
 Jenkins, Terraform, Ansible, Yandex Cloud
 
 ```
-cd ./
+cd ~/
 git clone https://github.com/svetlogor/devops_qualification.git
 ```
