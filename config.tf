@@ -16,6 +16,11 @@ variable "ssh_key" {
   type        = string
 }
 
+variable "folder_id" {
+  description = "Yandex Cloud folder id"
+  type        = string
+}
+
 resource "yandex_compute_disk" "boot-disk-1" {
   name     = "boot-disk-1"
   type     = "network-hdd"
