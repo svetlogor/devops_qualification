@@ -58,7 +58,9 @@ EOF
 			  input message: 'Destroy Terraform?'
 			  sh '''
 				  set -e
-				  terraform destroy -auto-approve
+				  terraform destroy -auto-approve \
+				  	-var='ssh_key=${SSH_PUB_KEY}' \
+				  	-var='folder_id=${YC_FOLDER_ID}'
 			  '''
 		  }
 	  }
