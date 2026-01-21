@@ -10,8 +10,7 @@ pipeline {
   }
 
   stages {
-
-	  stage('Configuration Terraform') {
+	  stage('Terraform init') {
 		  steps {
 			  sh '''
 			  cat <<EOF > .terraformrc
@@ -26,14 +25,6 @@ provider_installation {
 }
 EOF
             export TF_CLI_CONFIG_FILE=\$(pwd)/.terraformrc
-			  '''
-		  }
-	  }
-
-
-	  stage('Terraform init') {
-		  steps {
-			  sh '''
 				  set -e
 				  export YC_TOKEN=${YC_TOKEN}
 				  terraform init
