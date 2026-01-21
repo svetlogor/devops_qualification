@@ -6,7 +6,6 @@ pipeline {
 		  steps {
 			  sh '''
 				  set -e
-				  cd ~/devops_qualification
 				  terraform init
 				  terraform plan
 				  terraform apply -auto-approve
