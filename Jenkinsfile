@@ -31,43 +31,29 @@ EOF
 	  }
 
 
-	  stage('Creating two instances in Yandex Cloud') {
+	  stage('Terraform init') {
 		  steps {
 			  sh '''
 				  set -e
 				  export YC_TOKEN=${YC_TOKEN}
 				  terraform init
-				  terraform plan -var='ssh_key=${SSH_PUB_KEY}' \
-				  	-var='folder_id=${YC_FOLDER_ID}'
-				  terraform apply -auto-approve \
-				  	-var='ssh_key=${SSH_PUB_KEY}' \
-				  	-var='folder_id=${YC_FOLDER_ID}'
 			  '''
 		  }
 	  }
-	  stage('Creating two instances in Yandex Cloud') {
+	  stage('Terraform plan') {
 		  steps {
 			  sh '''
 				  set -e
-				  export YC_TOKEN=${YC_TOKEN}
-				  terraform init
 				  terraform plan -var='ssh_key=${SSH_PUB_KEY}' \
-				  	-var='folder_id=${YC_FOLDER_ID}'
-				  terraform apply -auto-approve \
-				  	-var='ssh_key=${SSH_PUB_KEY}' \
 				  	-var='folder_id=${YC_FOLDER_ID}'
 			  '''
 		  }
 	  }
 
-	  stage('Creating two instances in Yandex Cloud') {
+	  stage('Terraform apply') {
 		  steps {
 			  sh '''
 				  set -e
-				  export YC_TOKEN=${YC_TOKEN}
-				  terraform init
-				  terraform plan -var='ssh_key=${SSH_PUB_KEY}' \
-				  	-var='folder_id=${YC_FOLDER_ID}'
 				  terraform apply -auto-approve \
 				  	-var='ssh_key=${SSH_PUB_KEY}' \
 				  	-var='folder_id=${YC_FOLDER_ID}'
