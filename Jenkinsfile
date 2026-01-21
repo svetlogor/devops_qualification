@@ -4,13 +4,13 @@ pipeline {
   stages {
 	  stage('Creating two instances in Yandex Cloud') {
 		  steps {
-			  sh '''<<EOF
-			  set -e
-			  cd ~/devops_qualification
-			  terraform init
-			  terraform plan
-			  terraform apply -auto-approve
- EOF'''
+			  sh '''
+				  set -e
+				  cd ~/devops_qualification
+				  terraform init
+				  terraform plan
+				  terraform apply -auto-approve
+			  '''
        }
      }
 
