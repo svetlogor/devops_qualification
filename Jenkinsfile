@@ -31,6 +31,7 @@ EOF
 			  '''
 		  }
 	  }
+
 	  stage('Terraform plan') {
 		  steps {
 			  sh '''
@@ -49,7 +50,39 @@ EOF
 				  terraform apply -auto-approve \
 				  	-var="ssh_key=${SSH_PUB_KEY}" \
 				  	-var="folder_id=${YC_FOLDER_ID}"
+				  sleep 30
 			  '''
+		  }
+	  }
+
+	  stage('Generate Ansible inventory') {
+		  steps {
+			  sh '''
+				  set -e
+				  BUILD_IP=$(terraform output -raw external_ip_address_build)
+				  PROD_IP=$(terraform output -raw external_ip_address_prod)
+
+      cat > inventory.ini <<EOF
+[build]
+${BUILD_IP}
+
+[prod]
+${PROD_IP}
+
+[all:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/id_rsa
+EOF
+'''
+		  }
+	  }
+
+	  stage('Ansible deploy') {
+		  steps {
+			  sh '''
+				  ansible -i inventory.ini all -m ping
+				  ansible-playbook -i inventory.ini playbook.yml
+    		  '''
 		  }
 	  }
 
