@@ -43,8 +43,8 @@ EOF
 		  steps {
 			  sh '''
 				  set -e
-				  terraform plan -var='ssh_key=${SSH_PUB_KEY}' \
-				  	-var='folder_id=${YC_FOLDER_ID}' \
+				  terraform plan -var="ssh_key=${SSH_PUB_KEY}" \
+				  	-var="folder_id=${YC_FOLDER_ID}" \
 				  	-detailed-exitcode || true
 			  '''
 		  }
@@ -55,8 +55,8 @@ EOF
 			  sh '''
 				  set -e
 				  terraform apply -auto-approve \
-				  	-var='ssh_key=${SSH_PUB_KEY}' \
-				  	-var='folder_id=${YC_FOLDER_ID}'
+				  	-var="ssh_key=${SSH_PUB_KEY}" \
+				  	-var="folder_id=${YC_FOLDER_ID}"
 			  '''
 		  }
 	  }
@@ -67,8 +67,8 @@ EOF
 			  sh '''
 				  set -e
 				  terraform destroy -auto-approve \
-				  	-var='ssh_key=${SSH_PUB_KEY}' \
-				  	-var='folder_id=${YC_FOLDER_ID}'
+				  	-var="ssh_key=${SSH_PUB_KEY}" \
+				  	-var="folder_id=${YC_FOLDER_ID}"
 			  '''
 		  }
 	  }
