@@ -1,5 +1,5 @@
 # devops_qualification
-Jenkins, Terraform, Ansible, Yandex Cloud
+Jenkins, Terraform, Ansible, Yandex Cloud\
 OS: Ubuntu 20.04
 ```
 apt update
