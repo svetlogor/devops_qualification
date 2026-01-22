@@ -80,6 +80,7 @@ EOF
 	  stage('Ansible deploy') {
 		  steps {
 			  sh '''
+			 	  cat inventory.ini
 				  ansible -i inventory.ini all -m ping
 				  ansible-playbook -i inventory.ini playbook.yml
     		  '''
