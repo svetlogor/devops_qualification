@@ -44,6 +44,11 @@ data "yandex_vpc_subnet" "network1-b" {
 resource "yandex_compute_instance" "build" {
   name = "build"
 
+  labels = {
+  env     = "build"
+  project = "ci"
+  }
+
   resources {
     cores  = 2
     memory = 2
@@ -69,6 +74,11 @@ resource "yandex_compute_instance" "build" {
 
 resource "yandex_compute_instance" "prod" {
   name = "prod"
+
+  labels = {
+  env     = "prod"
+  project = "ci"
+  }
 
   resources {
     cores  = 2
