@@ -10,6 +10,14 @@ pipeline {
   }
 
   stages {
+	  stage('Debug SSH key') {
+  		steps {
+    		sh '''
+      		echo "SSH KEY:"
+      		echo "${SSH_PUB_KEY}"
+    		'''
+  		}
+	  }
 	  stage('Terraform init') {
 		  steps {
 			  sh '''
