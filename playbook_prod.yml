@@ -12,8 +12,7 @@
       name: docker.io
       state: present
 
-#  - name: Transfer files from Build to Prod
-#    synchronize:
-#      src: /var/lib/tomcat9/webapps/hello-1.0
-#      dest: /var/lib/tomcat9/webapps
-#    delegate_to: 158.160.76.170
+  - name: Copy files from localhost to Prod
+    synchronize:
+      src: ./hello-1.0.war
+      dest: /home/ubuntu/

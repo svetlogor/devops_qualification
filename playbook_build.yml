@@ -27,3 +27,9 @@
     command:
       chdir: /home/ubuntu/java-app
       cmd: mvn package
+
+  - name: Copy files from Build to localhost
+    synchronize:
+      mode: pull
+      src: /home/ubuntu/boxfuse-sample-java-war-hello/target/hello-1.0.war
+      dest: ./
