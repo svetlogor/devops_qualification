@@ -29,7 +29,7 @@
   - name: Start docker conteiner with Java app
     docker_container:
       name: my_java_app
-      image: tomcat:9.0
+      image: tomcat:9.0-jre8-alpine
       state: started
       restart_policy: always
       published_ports:
