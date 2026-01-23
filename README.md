@@ -1,5 +1,9 @@
-# devops_qualification
-Jenkins, Terraform, Ansible, Yandex Cloud\
+# DevOps qualification assignment. 
+*Write a Jenkins pipeline that deploys instances in Yandex Cloud,
+builds a Java application on them, and
+deposits the application on the stage. You must use Terraform and Ansible code.
+The application must be deployed in a container.*\
+<br> Jenkins, Terraform, Ansible, Yandex Cloud\
 OS: Ubuntu 20.04
 ```
 apt update
