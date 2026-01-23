@@ -70,6 +70,7 @@ ${BUILD_IP}
 ${PROD_IP}
 
 [all:vars]
+ansible_user=ubuntu
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 EOF
 '''
