@@ -31,5 +31,5 @@
   - name: Copy files from Build to localhost
     synchronize:
       mode: pull
-      src: /home/ubuntu/boxfuse-sample-java-war-hello/target/hello-1.0.war
+      src: /home/ubuntu/java-app/target/hello-1.0.war
       dest: ./
