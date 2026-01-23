@@ -59,10 +59,10 @@ EOF
 		  steps {
 			  sh '''
 				  set -e
-				  BUILD_IP=$(terraform output -raw external_ip_address_build)
+				  PROD_IP=$(terraform output -raw external_ip_address_prod)
 	  cat > inventory.ini <<EOF
-[build]
-${BUILD_IP}
+[prod]
+${PROD_IP}
 
 [all:vars]
 ansible_user=ubuntu
@@ -84,15 +84,26 @@ EOF
 		  }
 	  }
 
-	  stage('Ansible: building the Java app') {
+	  //stage('Ansible: building the Java app') {
+		//  steps {
+		//	  sshagent(['id_rsa']){
+		//		  sh '''
+		//		  ansible-playbook -i inventory.ini playbook_build.yml
+    	//	  '''
+		//	  }
+		//  }
+	  //}
+
+	  stage('Ansible: deploy the Java app') {
 		  steps {
 			  sshagent(['id_rsa']){
 				  sh '''
-				  ansible-playbook -i inventory.ini playbook_build.yml
+				  ansible-playbook -i inventory.ini playbook_prod.yml
     		  '''
 			  }
 		  }
 	  }
+
 
 	  stage('Terraform destroy') {
 		  steps {

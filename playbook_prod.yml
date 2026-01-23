@@ -1,0 +1,19 @@
+- name: bootstrapping server Prod
+  hosts: prod
+  become: yes
+
+  tasks:
+  - name: Update all packages to the latest version
+    apt:
+      upgrade: dist
+
+  - name: Ensure tomcat9 package is present
+    apt:
+      name: docker.io
+      state: present
+
+#  - name: Transfer files from Build to Prod
+#    synchronize:
+#      src: /var/lib/tomcat9/webapps/hello-1.0
+#      dest: /var/lib/tomcat9/webapps
+#    delegate_to: 158.160.76.170
