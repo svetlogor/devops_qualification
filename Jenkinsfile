@@ -80,10 +80,12 @@ EOF
 
 	  stage('Ansible deploy') {
 		  steps {
-			  sh '''
+			  sshagent(['id_rsa']){
+				  sh '''
 			 	  cat inventory.ini
 			 	  ansible -i inventory.ini all -m ping
     		  '''
+			  }
 		  }
 	  }
 
