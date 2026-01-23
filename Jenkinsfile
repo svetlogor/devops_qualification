@@ -88,7 +88,7 @@ EOF
 		  steps {
 			  sshagent(['id_rsa']){
 				  sh '''
-				  ansible-playbook -i inventory.ini playbook.yml
+				  ansible-playbook -i inventory.ini playbook_build.yml
     		  '''
 			  }
 		  }
