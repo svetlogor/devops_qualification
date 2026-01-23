@@ -4,7 +4,12 @@ builds a Java application on them, and
 deposits the application on the stage. You must use Terraform and Ansible code.
 The application must be deployed in a container.*\
 <br> Jenkins, Terraform, Ansible, Yandex Cloud\
-OS: Ubuntu 20.04
+OS: Ubuntu 20.04\
+<br>The Java application that we will be building: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+<br>After the build, the application will be available via the link: 
+```http://<external ip adress>:8080/hello-1.0/```
+
+
 ```
 apt update
 apt install unzip
