@@ -84,7 +84,7 @@ EOF
 		  }
 	  }
 
-	  stage('Ansible deploy') {
+	  stage('Ansible: building the Java app') {
 		  steps {
 			  sshagent(['id_rsa']){
 				  sh '''
