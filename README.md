@@ -19,10 +19,20 @@ systemctl start jenkins
 systemctl status jenkins
 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
-Если при выполнение wget ошибка, тогда нужно создать деррикторию:
-```
-mkdir -p /etc/apt/keyrings
-```
+>If there is an error when executing wget, then you need to create a directory:
+>```
+>mkdir -p /etc/apt/keyrings
+>```
+**In Credentials, you need to add:**
+
+|             Type              |        ID         |      Discription       |
+|:-----------------------------:|:-----------------:|:----------------------:|
+|          Secret text          |     YC_TOKEN      |   Yandex Cloud token   |
+|          Secret text          |   YC_FOLDER_ID    | Yandex Cloud folder id |
+|          Secret text          |    id_rsa_pub     |     SSH id_rsa.pub     |
+| SSH Username with private key |      id_rsa       |       SSH id_rsa       |
+
+
 
 
 ## Terraform:
