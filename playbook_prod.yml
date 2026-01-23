@@ -7,7 +7,7 @@
     apt:
       upgrade: dist
 
-  - name: Ensure tomcat9 package is present
+  - name: Ensure docker package is present
     apt:
       name: docker.io
       state: present
