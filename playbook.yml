@@ -1,0 +1,29 @@
+---
+- name: bootstrapping server Build
+  hosts: build
+  become: yes
+
+  tasks:
+  - name: Update all packages to the latest version
+    apt:
+      upgrade: dist
+
+  - name: Ensure default-jdk package is present
+    apt:
+      name: default-jdk
+      state: present
+
+  - name: Ensure maven package is present
+    apt:
+      name: maven
+      state: present
+
+  - name: Clone a repo
+    git:
+      repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+      dest: /home/ubuntu/java-app
+
+  - name: Run command mvn package
+    command:
+      chdir: /home/ubuntu/java-app
+      cmd: mvn package
