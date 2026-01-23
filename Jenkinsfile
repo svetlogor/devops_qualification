@@ -94,15 +94,15 @@ EOF
 		  }
 	  }
 
-	  //stage('Ansible: deploy the Java app') {
-		//  steps {
-		//	  sshagent(['id_rsa']){
-		//		  sh '''
-		//		  ansible-playbook -i inventory.ini playbook_prod.yml
-    	//	  '''
-		//	  }
-		//  }
-	  //}
+	  stage('Ansible: deploy the Java app') {
+		  steps {
+			  sshagent(['id_rsa']){
+				  sh '''
+				  ansible-playbook -i inventory.ini playbook_prod.yml
+    		  '''
+			  }
+		  }
+	  }
 
 
 	  stage('Terraform destroy') {
