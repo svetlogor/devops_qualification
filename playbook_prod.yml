@@ -16,3 +16,14 @@
     synchronize:
       src: ./hello-1.0.war
       dest: /home/ubuntu/
+
+  - name: Start docker conteiner with Java app
+    docker_container:
+      name: my_java_app
+      image: tomcat:9.0
+      state: started
+      restart_policy: always
+      published_ports:
+        - "8080:8080"
+      volumes:
+        - "/home/ubuntu/hello-1.0.war:/usr/local/tomcat/webapps/hello-1.0.war"
