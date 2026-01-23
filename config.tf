@@ -29,13 +29,13 @@ resource "yandex_compute_disk" "boot-disk-1" {
   image_id = "fd861t36p9dqjfrqm0g4"
 }
 
-resource "yandex_compute_disk" "boot-disk-2" {
-  name     = "boot-disk-2"
-  type     = "network-hdd"
-  zone     = "ru-central1-b"
-  size     = "20"
-  image_id = "fd861t36p9dqjfrqm0g4"
-}
+# resource "yandex_compute_disk" "boot-disk-2" {
+#   name     = "boot-disk-2"
+#   type     = "network-hdd"
+#   zone     = "ru-central1-b"
+#   size     = "20"
+#   image_id = "fd861t36p9dqjfrqm0g4"
+# }
 
 data "yandex_vpc_subnet" "network1-b" {
   subnet_id = "e2lljsmqmc67m6ffcn92"
@@ -72,36 +72,36 @@ resource "yandex_compute_instance" "build" {
   }
 }
 
-resource "yandex_compute_instance" "prod" {
-  name = "prod"
-
-  labels = {
-  env     = "prod"
-  project = "ci"
-  }
-
-  resources {
-    cores  = 2
-    memory = 2
-  }
-
-  scheduling_policy {
-    preemptible = true
-  }
-
-  boot_disk {
-    disk_id = yandex_compute_disk.boot-disk-2.id
-  }
-
-  network_interface {
-    subnet_id = data.yandex_vpc_subnet.network1-b.id
-    nat       = true
-  }
-
-  metadata = {
-    ssh-keys = "ubuntu:${var.ssh_key}"
-  }
-}
+# resource "yandex_compute_instance" "prod" {
+#   name = "prod"
+#
+#   labels = {
+#   env     = "prod"
+#   project = "ci"
+#   }
+#
+#   resources {
+#     cores  = 2
+#     memory = 2
+#   }
+#
+#   scheduling_policy {
+#     preemptible = true
+#   }
+#
+#   boot_disk {
+#     disk_id = yandex_compute_disk.boot-disk-2.id
+#   }
+#
+#   network_interface {
+#     subnet_id = data.yandex_vpc_subnet.network1-b.id
+#     nat       = true
+#   }
+#
+#   metadata = {
+#     ssh-keys = "ubuntu:${var.ssh_key}"
+#   }
+# }
 
 output "internal_ip_address_build" {
   value = yandex_compute_instance.build.network_interface.0.ip_address
@@ -111,10 +111,10 @@ output "external_ip_address_build" {
   value = yandex_compute_instance.build.network_interface.0.nat_ip_address
 }
 
-output "internal_ip_address_prod" {
-  value = yandex_compute_instance.prod.network_interface.0.ip_address
-}
-
-output "external_ip_address_prod" {
-  value = yandex_compute_instance.prod.network_interface.0.nat_ip_address
-}
+# output "internal_ip_address_prod" {
+#   value = yandex_compute_instance.prod.network_interface.0.ip_address
+# }
+#
+# output "external_ip_address_prod" {
+#   value = yandex_compute_instance.prod.network_interface.0.nat_ip_address
+# }
