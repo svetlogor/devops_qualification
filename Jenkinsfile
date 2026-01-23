@@ -89,7 +89,7 @@ EOF
 			  sshagent(['id_rsa']){
 				  sh '''
 				  ansible-playbook -i inventory.ini playbook_build.yml
-				  rsync -avz ${BUILD_IP}:/home/ubuntu/hello-1.0.war ./
+				  rsync -avz $(terraform output -raw external_ip_address_build):/home/ubuntu/hello-1.0.war ./
     		  '''
 			  }
 		  }
