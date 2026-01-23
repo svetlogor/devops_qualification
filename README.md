@@ -19,7 +19,7 @@ systemctl start jenkins
 systemctl status jenkins
 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
-Если при выполненеи wget ошибка, тогда нужно создать деррикторию:
+Если при выполнение wget ошибка, тогда нужно создать деррикторию:
 ```
 mkdir -p /etc/apt/keyrings
 ```
