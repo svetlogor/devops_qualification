@@ -50,7 +50,7 @@ EOF
 				  terraform apply -auto-approve \
 				  	-var="ssh_key=${SSH_PUB_KEY}" \
 				  	-var="folder_id=${YC_FOLDER_ID}"
-				  sleep 15
+				  sleep 30
 			  '''
 		  }
 	  }
