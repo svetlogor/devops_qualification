@@ -60,14 +60,10 @@ EOF
 			  sh '''
 				  set -e
 				  BUILD_IP=$(terraform output -raw external_ip_address_build)
-				  //PROD_IP=$(terraform output -raw external_ip_address_prod)
 
       cat > inventory.ini <<EOF
 [build]
 ${BUILD_IP}
-
-//[prod]
-//${PROD_IP}
 
 [all:vars]
 ansible_user=ubuntu
