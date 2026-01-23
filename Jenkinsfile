@@ -73,7 +73,7 @@ EOF
 		  }
 	  }
 
-	  stage('Ansible deploy') {
+	  stage('Ansible ping') {
 		  steps {
 			  sshagent(['id_rsa']){
 				  sh '''
@@ -84,7 +84,15 @@ EOF
 		  }
 	  }
 
-	  //ansible-playbook -i inventory.ini playbook.yml
+	  stage('Ansible deploy') {
+		  steps {
+			  sshagent(['id_rsa']){
+				  sh '''
+				  ansible-playbook -i inventory.ini playbook.yml
+    		  '''
+			  }
+		  }
+	  }
 
 	  stage('Terraform destroy') {
 		  steps {
